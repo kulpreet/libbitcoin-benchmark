@@ -1,0 +1,2 @@
+#define LibbitcoinBenchmark_VERSION_MAJOR @LibbitcoinBenchmark_VERSION_MAJOR@
+#define LibbitcoinBenchmark_VERSION_MINOR @LibbitcoinBenchmark_VERSION_MINOR@
