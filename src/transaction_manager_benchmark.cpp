@@ -21,20 +21,16 @@
 #include <benchmark/benchmark.h>
 
 #include "database_benchmark.hpp"
+#include <bitcoin/database/transaction_management/transaction_manager.hpp>
 
-static void BM_StringCreation(benchmark::State& state) {
-  for (auto _ : state)
-    std::string empty_string;
+using namespace libbitcoin::database;
+
+static void BM_BeginTransaction(benchmark::State& state) {
+    transaction_manager manager{};
+    for (auto _ : state)
+        manager.begin_transaction();
 }
 // Register the function as a benchmark
-BENCHMARK(BM_StringCreation);
-
-// Define another benchmark
-static void BM_StringCopy(benchmark::State& state) {
-  std::string x = "hello";
-  for (auto _ : state)
-    std::string copy(x);
-}
-BENCHMARK(BM_StringCopy);
+BENCHMARK(BM_BeginTransaction);
 
 BENCHMARK_MAIN();
