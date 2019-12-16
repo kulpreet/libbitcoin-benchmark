@@ -20,7 +20,7 @@
 
 #include <benchmark/benchmark.h>
 
-#include "database_benchmark.hpp"
+#include "libbitcoin_benchmark.hpp"
 #include <bitcoin/database/transaction_management/transaction_manager.hpp>
 
 using namespace libbitcoin::database;
