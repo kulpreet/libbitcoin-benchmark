@@ -13,24 +13,28 @@ find_package( Bitcoin-Database 4.0.0 REQUIRED )
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-link_directories(bm PUBLIC
+link_directories(
   ${bitcoin_system_LIBRARY_DIRS}
   ${bitcoin_database_LIBRARY_DIRS}
   )
 
-add_executable(bm
-  src/transaction_manager_benchmark.cpp
-  )
-
-target_include_directories(bm PUBLIC
+include_directories(
   "${PROJECT_BINARY_DIR}"
   "include"
   ${bitcoin_system_INCLUDE_DIRS}
   ${bitcoin_database_INCLUDE_DIRS}
   )
 
-target_link_libraries(bm PUBLIC
+link_libraries(
   "benchmark"
   ${bitcoin_system_LIBRARIES}
   ${bitcoin_database_LIBRARIES}
+  )
+
+add_executable(bm
+  src/transaction_manager_benchmark.cpp
+  )
+
+add_executable(bm-script-verify
+  src/script/verify_script_benchmark.cpp
   )
